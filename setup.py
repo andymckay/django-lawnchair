@@ -1,8 +1,9 @@
 from distutils.core import setup
 setup(name='django-lawnchair',
-      version='0.1',
+      version='0.1.1',
       description='Libraries to make working with Django and Lawnchair easier',
       author="Andy McKay",
+      url = "http://github.com/andymckay/django-lawnchair",
       author_email="andy@clearwind.ca",
       packages=["lawnchair",],
       package_dir = {'lawnchair':'src'},
