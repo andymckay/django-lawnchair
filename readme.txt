@@ -20,7 +20,11 @@ needed yet more buggy simple little to do apps (we don't).
 
 To install the example:
 
-- add in lawnchair into your Python path (python setup.py install)
+- make sure you have lawnchair JS on your site (http://brianleroux.github.com/lawnchair/)
+
+- make sure you have jquery JS on your site (http://jquery.com)
+
+- add in django-lawnchair into your Python path (python setup.py install)
 
 - add in example into your Django project
 

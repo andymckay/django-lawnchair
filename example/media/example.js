@@ -1,18 +1,18 @@
-var futon = new djangochair('/todo/list');
+var todos = new djangochair('/todo/list');
 
 $(document).ready(function() {
     $('input:checkbox').live('change', function(){
         var checked = $(this).attr('checked');
         var key = $(this).val();
-        futon.get(key, function(r) {
+        todos.get(key, function(r) {
             r.data.fields.completed = checked;
-            futon.update(r);
+            todos.update(r);
         });
     });
     
     $("#table a").live('click', function(){
         var key = $(this)[0].id.substr(7);
-        futon.remove(key);
+        todos.remove(key);
         return false;
     });
 
@@ -29,27 +29,27 @@ $(document).ready(function() {
     }
 
     $("#save").bind("click", function() {
-       futon.updated(function(r) {
-           futon.remote_save(r);
+       todos.updated(function(r) {
+           todos.remote_save(r);
        });
-       futon.deleted(function(r) {
-           futon.remote_delete(r, function(r) {
-               futon.purge(r.key);
+       todos.deleted(function(r) {
+           todos.remote_delete(r, function(r) {
+               todos.purge(r.key);
            });
        });
     });
 
     $("#sync").bind("click", function() {
         $('#table tbody').html("");
-        futon.remote_get(add_row);
+        todos.remote_get(add_row);
     });
     
     $("#reset").bind("click", function() {
         $('#table tbody').html("");
-        futon.nuke();
-        futon.remote_get(add_row);
+        todos.nuke();
+        todos.remote_get(add_row);
     });
     
-    futon.each(add_row);
+    todos.each(add_row);
 })
 
